@@ -1,4 +1,4 @@
-# roy-okite
+# Roy Okite
 Create a new simple Angular 2+ application. This application should include two pages
 
 a. Page one - A search input field and a table with collections for farmers.
