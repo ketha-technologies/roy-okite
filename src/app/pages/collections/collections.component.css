@@ -1,0 +1,17 @@
+.table-container {
+  height: max-content;
+  width: 80%;
+  overflow: auto;
+  margin-inline: auto;
+  margin-top: 2rem;
+}
+
+table {
+  width: 100%;
+
+}
+
+.header {
+  background-color: #1e255b;
+  color: white;
+}
