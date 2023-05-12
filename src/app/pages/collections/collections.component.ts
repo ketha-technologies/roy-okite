@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { Collection } from 'src/app/models/collection';
 import { CollectionsapiService } from 'src/app/services/collectionsapi.service';
 
 @Component({
@@ -18,12 +22,23 @@ export class CollectionsComponent implements OnInit {
   displayedColumns = ['position', 'collectionCode', 'farmer', 'collectionSize', 'collectionDate'];
 
   collectionsData: any;
+  dataSource: any;
+
+  @ViewChild(MatPaginator) paginator !:MatPaginator
+  @ViewChild(MatSort) sort !:MatSort
 
   getAllCollections() {
     this.service.getAllCollections().subscribe(response => {
       this.collectionsData = response;
+      this.dataSource = new MatTableDataSource<Collection>(this.collectionsData);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     });
   }
 
+  applySearch(event: Event) {
+    const searchValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = searchValue;
+  }
 
 }

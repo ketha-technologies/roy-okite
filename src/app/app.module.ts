@@ -1,7 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator'
+import { MatSortModule } from '@angular/material/sort'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,10 +20,14 @@ import { CollectionsComponent } from './pages/collections/collections.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     MatTableModule,
-    HttpClientModule
+    MatFormFieldModule,
+    MatInputModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
-  providers: [],
+  providers: [provideAnimations()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
