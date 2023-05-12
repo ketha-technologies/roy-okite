@@ -1,1 +1,37 @@
-<p>collections works!</p>
+<section class="table-container mat-elevation-z8" tabindex="0">
+  <table mat-table [dataSource]="collectionsData">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element; let i = index"> {{i + 1}} </td>
+    </ng-container>
+
+    <!-- CollectionCode Column -->
+    <ng-container matColumnDef="collectionCode">
+      <th mat-header-cell *matHeaderCellDef> CollectionCode </th>
+      <td mat-cell *matCellDef="let element"> {{element.collectionCode}} </td>
+    </ng-container>
+
+    <!-- Farmer Column -->
+    <ng-container matColumnDef="farmer">
+      <th mat-header-cell *matHeaderCellDef> Farmer </th>
+      <td mat-cell *matCellDef="let element"> {{element.farmer}} </td>
+    </ng-container>
+
+    <!-- CollectionSize Column -->
+    <ng-container matColumnDef="collectionSize">
+      <th mat-header-cell *matHeaderCellDef> CollectionSize </th>
+      <td mat-cell *matCellDef="let element"> {{element.collectionSize}} </td>
+    </ng-container>
+
+    <!-- CollectionDate Column -->
+    <ng-container matColumnDef="collectionDate">
+      <th mat-header-cell *matHeaderCellDef> CollectionDate </th>
+      <td mat-cell *matCellDef="let element"> {{element.collectionDate}} </td>
+    </ng-container>
+
+    <tr class="header" mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</section>
