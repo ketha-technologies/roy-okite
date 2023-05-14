@@ -33,12 +33,14 @@ export class CollectionsComponent implements OnInit {
       this.dataSource = new MatTableDataSource<Collection>(this.collectionsData);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+      this.dataSource.filterPredicate = function (record: any,filter: any) {
+        return record.collectionCode.indexOf(filter)!=-1;
+     }
     });
   }
 
   applySearch(event: Event) {
     const searchValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = searchValue;
+    this.dataSource.filter = searchValue.trim().toUpperCase();
   }
-
 }
