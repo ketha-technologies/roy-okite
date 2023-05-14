@@ -21,9 +21,11 @@ export class ChartComponent implements OnInit {
   ngOnInit(): void {
     this.service.getAllCollections().subscribe(response => {
       this.chartData = response;
+      this.chartData.sort((a: any, b: any) => new Date(a.collectionDate).valueOf() - new Date(b.collectionDate).valueOf());
+      console.log(this.chartData)
       if(this.chartData!=null) {
         for(let i = 0; i < this.chartData.length; i++) {
-          console.log(this.chartData[i]);
+          // console.log(this.chartData[i]);
           this.dateData.push(this.chartData[i].collectionDate.slice(0, 10));
           this.sizeData.push(this.chartData[i].collectionSize);
         }
