@@ -33,8 +33,12 @@ export class CollectionsComponent implements OnInit {
       this.dataSource = new MatTableDataSource<Collection>(this.collectionsData);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      this.dataSource.filterPredicate = function (record: any,filter: any) {
-        return record.collectionCode.indexOf(filter)!=-1;
+      this.dataSource.filterPredicate = function (record: any, filter: any) {
+        const regex = new RegExp(/(\w)\w*\1\w*\1\w*/)
+        if(regex.test(record.collectionCode)) {
+          return record.collectionCode.indexOf(filter)!=-1;
+        }
+        return alert('Invalid Collection Code!');
      }
     });
   }
