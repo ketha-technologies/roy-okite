@@ -11,11 +11,13 @@ import { MatSortModule } from '@angular/material/sort'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CollectionsComponent } from './pages/collections/collections.component';
+import { ChartComponent } from './pages/chart/chart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CollectionsComponent
+    CollectionsComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,

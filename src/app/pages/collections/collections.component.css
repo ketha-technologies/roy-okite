@@ -12,7 +12,9 @@ table {
 
 }
 
-.header {
+.header,
+th {
   background-color: #1e255b;
   color: white;
+  font-size: large;
 }
