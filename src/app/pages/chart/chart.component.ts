@@ -22,10 +22,22 @@ export class ChartComponent implements OnInit {
     this.service.getAllCollections().subscribe(response => {
       this.chartData = response;
       this.chartData.sort((a: any, b: any) => new Date(a.collectionDate).valueOf() - new Date(b.collectionDate).valueOf());
-      console.log(this.chartData)
+
+      let aggregateData = Object.values(this.chartData.reduce((a: any, { collectionSize, collectionDate }: any) => {
+        collectionSize = Number(collectionSize);
+        collectionDate = collectionDate.slice(0, 10);
+
+      if(!a[collectionDate])
+        a[collectionDate] = Object.assign({},{collectionSize, collectionDate});
+        else
+        a[collectionDate].collectionSize += collectionSize;
+      return a;
+      },{}));
+
+      this.chartData = aggregateData;
+
       if(this.chartData!=null) {
         for(let i = 0; i < this.chartData.length; i++) {
-          // console.log(this.chartData[i]);
           this.dateData.push(this.chartData[i].collectionDate.slice(0, 10));
           this.sizeData.push(this.chartData[i].collectionSize);
         }
