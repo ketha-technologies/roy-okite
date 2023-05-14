@@ -39,8 +39,13 @@ export class CollectionsComponent implements OnInit {
     });
   }
 
-  applySearch(event: Event) {
-    const searchValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = searchValue.trim().toUpperCase();
+  timeout: any = null;
+
+  applySearch(event: any) {
+    clearTimeout(this.timeout);
+    this.timeout = setTimeout( () => {
+      const searchValue = (event.target as HTMLInputElement).value;
+      this.dataSource.filter = searchValue.trim().toUpperCase();
+    }, 1500);
   }
 }
