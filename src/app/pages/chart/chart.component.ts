@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js/auto';
 import { CollectionsapiService } from 'src/app/services/collectionsapi.service';
 
-
 @Component({
   selector: 'app-chart',
   templateUrl: './chart.component.html',
@@ -50,9 +49,9 @@ export class ChartComponent implements OnInit {
   createChart(dateData: any, sizeData: any, type: any, id: any){
   
     this.chart = new Chart(id, {
-      type: type, //this denotes the type of chart
+      type: type,
 
-      data: {// values on X-Axis
+      data: {
         labels: dateData, 
 	       datasets: [
           {
@@ -67,8 +66,7 @@ export class ChartComponent implements OnInit {
       },
       options: {
         aspectRatio:2.5
-      }
-      
+      }      
     });
   }  
 }
