@@ -1,0 +1,17 @@
+.nav {
+  display: flex;
+  background-color: #1e255b;
+  margin-top: 0%;
+}
+
+li {
+  list-style: none;
+  margin: 1rem;
+}
+
+a {
+  text-decoration: none;
+  font-size: large;
+  font-weight: 400;
+  color: white;
+}
