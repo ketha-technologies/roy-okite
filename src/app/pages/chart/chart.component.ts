@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js/auto';
+import { CollectionsapiService } from 'src/app/services/collectionsapi.service';
 
 
 @Component({
@@ -11,23 +12,41 @@ export class ChartComponent implements OnInit {
 
   public chart: any;
 
-  ngOnInit(): void {
-    this.createChart();
-  }
+  constructor(private service:CollectionsapiService) {}
 
-  createChart(){
+  chartData: any;
+  dateData: any[]=[];
+  sizeData: any[]=[];
+
+  ngOnInit(): void {
+    this.service.getAllCollections().subscribe(response => {
+      this.chartData = response;
+      if(this.chartData!=null) {
+        for(let i = 0; i < this.chartData.length; i++) {
+          console.log(this.chartData[i]);
+          this.dateData.push(this.chartData[i].collectionDate.slice(0, 10));
+          this.sizeData.push(this.chartData[i].collectionSize);
+        }
+        this.createChart(this.dateData, this.sizeData);
+      }
+    });
+  }
+ 
+  createChart(dateData: any, sizeData: any){
   
     this.chart = new Chart("MyChart", {
-      type: 'bar', //this denotes tha type of chart
+      type: 'bar', //this denotes the type of chart
 
       data: {// values on X-Axis
-        labels: ['2021-06-31', '2023-01-31', '2023-03-01','2023-03-05',
-								 '2023-03-31', '2023-04-29', '2023-04-31' ], 
+        labels: dateData, 
 	       datasets: [
           {
             label: "Collections Size",
-            data: ['279','92', '34', '16', '175', '73', '100'],
-            backgroundColor: '#1e255b'
+            data: sizeData,
+            backgroundColor: '#1e255b',
+            borderColor: '#9098cc',
+            borderWidth: 2
+      
           }
         ]
       },
