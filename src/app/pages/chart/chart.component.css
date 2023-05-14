@@ -1,5 +1,13 @@
 .chart-container {
   width: 80%;
   margin-inline: auto;
+}
+
+canvas {
+  margin-bottom: 2rem;
   margin-top: 2rem;
+}
+
+hr {
+  border: solid 3px #1e255b;
 }

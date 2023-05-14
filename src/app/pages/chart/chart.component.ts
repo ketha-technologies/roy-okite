@@ -29,15 +29,16 @@ export class ChartComponent implements OnInit {
           this.dateData.push(this.chartData[i].collectionDate.slice(0, 10));
           this.sizeData.push(this.chartData[i].collectionSize);
         }
-        this.createChart(this.dateData, this.sizeData);
+        this.createChart(this.dateData, this.sizeData, 'bar', 'barchart');
+        this.createChart(this.dateData, this.sizeData, 'line', 'linechart');
       }
     });
   }
  
-  createChart(dateData: any, sizeData: any){
+  createChart(dateData: any, sizeData: any, type: any, id: any){
   
-    this.chart = new Chart("MyChart", {
-      type: 'bar', //this denotes the type of chart
+    this.chart = new Chart(id, {
+      type: type, //this denotes the type of chart
 
       data: {// values on X-Axis
         labels: dateData, 
