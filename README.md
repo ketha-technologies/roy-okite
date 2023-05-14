@@ -20,3 +20,6 @@ If there are any points that are not clear from this task, you can make assumpti
 Handing in
 
 Please do all the work in a branch develop, and open a Pull request from develop to main when you are done.
+
+## My Solution Demo
+![](./src/assets/Ketha%20Farmer%20Collections.gif)
